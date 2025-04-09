@@ -20,6 +20,8 @@ require("lazy").setup({
     require 'plugins.treesitter-context', -- context line for long functions
     require 'plugins.telescope',          -- search utility
     require 'plugins.neo-tree',           -- tree to browse file system
+    require 'plugins.lsp',                -- errors / linting of code
+    require 'plugins.cmp',                -- autocompletion
     -- Plugins below are imported with little/no extra options
 
 })

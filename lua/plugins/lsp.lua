@@ -24,6 +24,7 @@ return {
                 "basedpyright",
                 "ruff",
                 "clangd",
+                "jdtls",
             },
             handlers = {
                 function(server_name)
@@ -85,6 +86,24 @@ return {
                         on_attach = function(client, _)
                             client.server_capabilities.renameProvider = false
                         end,
+                    })
+                end,
+
+                ["jdtls"] = function()
+                    require("lspconfig").jdtls.setup({
+                        capabilities = capabilities,
+                        cmd = { "jdtls" },
+                        root_dir = require("lspconfig.util").root_pattern(".git", "mvnw", "gradlew", "build.gradle"),
+                        settings = {
+                            java = {
+                                format = {
+                                    enabled = true,
+                                },
+                                saveActions = {
+                                    organizeImports = true,
+                                },
+                            },
+                        },
                     })
                 end,
 
